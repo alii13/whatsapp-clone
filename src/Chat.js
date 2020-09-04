@@ -100,6 +100,32 @@ function Chat() {
                         </IconButton>
                     </div>
                 </div>
+                <div className="chat__header__absolute">
+                <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+              >
+                <ArrowBackIcon />
+              </IconButton>
+                    <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+                    <div className="chat__headerInfo">
+                        <h3>{roomName}</h3>
+                        <p className="header__lastSeen">last seen {messages.length!==0?(messages[messages.length-1].timestamp?.toDate().toUTCString()):"Loading"}</p>
+                    </div>
+                    <div className="chat__headerRight">
+                        <IconButton>
+                            <SearchOutlined />
+                        </IconButton>
+                        <IconButton>
+                            <AttachFile />
+                        </IconButton>
+                        <IconButton>
+                            <MoreVertIcon />
+                        </IconButton>
+                    </div>
+                </div>
                 <div className="chat__body">
                     {messages.map((message) => (
                         <p className={`chat__messages ${(message.name===displayName) && 'chat__reciever'}`}>
@@ -111,6 +137,20 @@ function Chat() {
                 </div>
     
                 <div className="chat__footer">
+                    <IconButton>
+                    <InsertEmoticonIcon/>
+                    </IconButton>
+                    <form>
+                        <input value={input} type="text" placeholder="Type a message" onChange={e=>setInput(e.target.value)}/>
+                        <button type="submit" onClick={sendMessage} >Send A message</button>
+                    </form>
+                    <IconButton>
+                   <MicIcon/>
+                    </IconButton>
+    
+                </div>
+
+                <div className="chat__footer__absolute">
                     <IconButton>
                     <InsertEmoticonIcon/>
                     </IconButton>

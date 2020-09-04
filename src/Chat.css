@@ -19,6 +19,8 @@
 .chat__headerInfo p{
     color: gray;
 }
+
+
 .chat__messages{
     position: relative;
     font-size: 14px;
@@ -64,6 +66,7 @@
 }
 .chat__footer{
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
     height: 62px;
@@ -99,18 +102,29 @@
     }
     .chat__header{
         background-color: #e6e6e6;
-        position: sticky;
-        top:0;
         width: -webkit-fill-available;
-        z-index: 3;
+        position: relative;
+    }
+    .chat__header__absolute{
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        background-color: #e6e6e6;
+
     }
     .chat__body{
         padding:15px;
+        flex: 0.94 1;
     }
     .chat__messages{
         font-size:3vw;
         max-width:75vw;
-        overflow-wrap: anywhere;
+        word-wrap: break-word;
+    }
+    .chat__header__absolute{
+        display: flex;
+        padding:20px;
+        border-bottom:1px solid lightgray
     }
     .chat__headerRight{
         min-width:60px !important;
@@ -124,11 +138,20 @@
         padding: 0.5em;
     }
     .chat__footer {
-        position: sticky;
+        position: fixed;
         bottom: 0;
         background-color: #e6e6e6;;
+        width: -webkit-fill-available;
         z-index: 4;
         height: 52px;
+    }
+    .chat__footer__absolute{
+        display: flex;
+        position: absolute;
+        justify-content: space-between;
+        align-items: center;
+        height: 62px;
+        border-top:1px solid lightgray
     }
     .header__lastSeen{
         font-size: 0.6em;

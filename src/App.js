@@ -5,8 +5,11 @@ import Chat from "./Chat"
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Login from "./Login";
 import {useStateValue} from "./StateProvider"
+import UseWindowDimensions from "./UseWindowDimensions";
+
 function App() {
   const [{user},dispatch] = useStateValue();
+  const { width } = UseWindowDimensions();
   const uid =  localStorage.getItem('uid')!==undefined?localStorage.getItem('uid'):null;
   //console.log(useStateValue);
   //const {user,setUser} = useState(null);

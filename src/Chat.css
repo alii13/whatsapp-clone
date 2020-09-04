@@ -1,0 +1,115 @@
+.chat{
+    display: flex;
+    flex-direction: column;
+    flex:0.65;
+}
+.chat__header{
+    display: flex;
+    padding:20px;
+    border-bottom:1px solid lightgray
+}
+.chat__headerInfo{
+    flex: 1;
+    padding-left: 20px;
+}
+.chat__headerInfo h3{
+    margin-bottom:3px;
+    font-weight: 500;
+}
+.chat__headerInfo p{
+    color: gray;
+}
+.chat__messages{
+    position: relative;
+    font-size: 14px;
+    padding: 10px;
+    border-radius:10px;
+    width: fit-content;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    background-color: #fff;
+}
+
+.chat__name{
+    position: absolute;
+    top:-15px;
+    font-weight: 800;
+    font-size:xx-small
+
+}
+.chat__timestamp{
+    margin-left: 10px;
+    font-size:xx-small;
+}
+.chat__reciever{
+    margin-left: auto;
+    background-color: #dcf8c6;
+}
+.chat__headerRight{
+    display: flex;
+    justify-content: space-between;
+    min-width: 100px;
+}
+.chat__body{
+    background-image: url('./bg.png');
+    flex: 1;
+    background-image: repeat;
+    background-position:center;
+    overflow: scroll;
+    padding: 30px;
+    overflow-x: hidden;
+
+}
+.chat__footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top:1px solid lightgray
+}
+.chat__footer form{
+    flex: 1;
+    display: flex;
+}
+.chat__footer form input{
+    flex:1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+}
+.chat__footer form input:focus{
+    border: none;
+    outline: none;
+}
+.chat__footer form button{
+    display: none;
+}
+.chat__footer .MuiSvgIcon-root{
+    padding:7px;
+    color: gray;
+}
+@media(max-width:628px){
+    .chat{
+        flex:1;
+    }
+    .chat__body{
+        padding:15px;
+    }
+    .chat__messages{
+        font-size:3vw;
+    }
+    .chat__headerRight{
+        min-width:60px !important;
+    }
+    /* .chat__headerRight button .MuiSvgIcon-root{
+        font-size:5vw;
+        padding:0.2em !important;
+    } */
+    button.MuiButtonBase-root.MuiIconButton-root {
+        font-size: 2vw;
+        padding: 0.5em;
+    }
+    .header__lastSeen{
+        font-size: 0.6em;
+    }
+}

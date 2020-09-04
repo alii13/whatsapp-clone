@@ -11,14 +11,16 @@ function Login() {
     const signIn=()=>{
         auth.signInWithPopup(provider)
         .then(result=>{
+            console.log(result.user);
             dispatch({
                 type:actionTypes.SET_USER,
-                user:result.user
+                user:result.user,
             });
             dispatch({
                 type:actionTypes.SET_SESSION,
                 uid:result.user.uid,
                 displayName:result.user.displayName,
+                photoURL:result.user.photoURL
             })
         })
         .catch((err)=>alert(err.message));

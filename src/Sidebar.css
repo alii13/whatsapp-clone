@@ -51,11 +51,31 @@
     flex: 1;
     background-color: white;
     overflow:scroll;
+    position: relative;
     overflow-x: hidden;
-
+}
+.hide__sidebar{
+    display: none;
+}
+.siderbar__wrapper{
+    display: flex;
+}
+.sidebar__greeting{
+    font-size:14px;
+    font-weight: bolder;
+    color: red;
 }
 @media(max-width:628px){
     .sidebar{
-        display:none;
+        flex: 1;
+        margin-left: 0;
     }
+    .sidebar__header{
+        flex: 1;
+    }
+    button.MuiButtonBase-root.MuiIconButton-root.sidebar__burger.MuiIconButton-colorInherit.MuiIconButton-edgeStart {
+        margin-left: 0;
+        padding-left: 10px;
+    }
+
 }

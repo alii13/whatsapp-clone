@@ -5,10 +5,15 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import MicIcon from "@material-ui/icons/Mic";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import db from "./firebase"
 import firebase from "firebase"
 import "./Chat.css"
 import { useParams } from 'react-router-dom';
+import { useStateValue } from './StateProvider'
+import { actionTypes } from "./reducer";
+import UseWindowDimensions from "./UseWindowDimensions";
+// import DrawerPhone from "./DrawerPhone";
 function Chat() {
 
     const [seed, setSeed] = useState("");
@@ -16,7 +21,10 @@ function Chat() {
     const {roomId}=useParams();
     const [roomName,setRoomName]=useState("false");
     const [messages,setMessages]=useState([]);
+    const [toggler, setToggler]=useState(true)
     const displayName =localStorage.getItem('displayName');
+    const [{togglerState}, dispatch]= useStateValue();
+     const { width } = UseWindowDimensions();
 
     //console.log(roomId);
     useEffect(()=>{
@@ -26,14 +34,14 @@ function Chat() {
                 setRoomName(snapshot.data().name)
             })
 
-            db.collection('rooms').doc(roomId).collection("messages").orderBy('timestamp','asc').onSnapshot(snapshot => {
+            db.collection('rooms').doc(roomId).collection("messages").onSnapshot(snapshot => {
                 setMessages(snapshot.docs.map(doc =>doc.data()));
             })
         }
 
     },[roomId])
 
-  
+ // console.log(togglerState);
     
     const sendMessage=(e)=>{
         e.preventDefault();
@@ -50,55 +58,123 @@ function Chat() {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
 
   }
+  useEffect(()=>{
+    setToggler(!toggler);
+  },[togglerState])
 
   useEffect(scrollToBottom, [messages]);
-
+  const handleDrawerToggle =() =>{
+      setToggler(!toggler);
+      dispatch({
+        type:actionTypes.SET_TOGGLER,
+        togglerState:togglerState+1
+    })
+  };
     return (
-        <div className="chat">
-            <div className="chat__header">
-                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
-                <div className="chat__headerInfo">
-                    <h3>{roomName}</h3>
-                    <p className="header__lastSeen">last seen {messages.length!=0?(messages[messages.length-1].timestamp?.toDate().toUTCString()):"Loading"}</p>
+    <>{
+        width<629?(
+            <div className={togglerState%2===0?"chat":"chat hide__chat"}>
+                <div className="chat__header">
+                <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+              >
+                <ArrowBackIcon />
+              </IconButton>
+                    <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+                    <div className="chat__headerInfo">
+                        <h3>{roomName}</h3>
+                        <p className="header__lastSeen">last seen {messages.length!==0?(messages[messages.length-1].timestamp?.toDate().toUTCString()):"Loading"}</p>
+                    </div>
+                    <div className="chat__headerRight">
+                        <IconButton>
+                            <SearchOutlined />
+                        </IconButton>
+                        <IconButton>
+                            <AttachFile />
+                        </IconButton>
+                        <IconButton>
+                            <MoreVertIcon />
+                        </IconButton>
+                    </div>
                 </div>
-                <div className="chat__headerRight">
-                    <IconButton>
-                        <SearchOutlined />
-                    </IconButton>
-                    <IconButton>
-                        <AttachFile />
-                    </IconButton>
-                    <IconButton>
-                        <MoreVertIcon />
-                    </IconButton>
+                <div className="chat__body">
+                    {messages.map((message) => (
+                        <p className={`chat__messages ${(message.name===displayName) && 'chat__reciever'}`}>
+                        <span className="chat__name">{message.name}</span>{message.message}
+                        <span className="chat__timestamp">
+                         {new Date(message.timestamp?.toDate()).toUTCString()}  </span></p>
+                    ))}
+                    <div ref={messagesEndRef} />
                 </div>
+    
+                <div className="chat__footer">
+                    <IconButton>
+                    <InsertEmoticonIcon/>
+                    </IconButton>
+                    <form>
+                        <input value={input} type="text" placeholder="Type a message" onChange={e=>setInput(e.target.value)}/>
+                        <button type="submit" onClick={sendMessage} >Send A message</button>
+                    </form>
+                    <IconButton>
+                   <MicIcon/>
+                    </IconButton>
+    
+                </div>
+    
             </div>
-            <div className="chat__body">
-                {messages.map((message) => (
-                    <p className={`chat__messages ${(message.name==displayName) && 'chat__reciever'}`}>
-                    <span className="chat__name">{message.name}</span>{message.message}
-                    <span className="chat__timestamp">
-                     {new Date(message.timestamp?.toDate()).toUTCString()}  </span></p>
-                ))}
-                <div ref={messagesEndRef} />
+        ):
+        (
+            <div className={"chat"}>
+                <div className="chat__header">
+                    <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+                    <div className="chat__headerInfo">
+                        <h3>{roomName}</h3>
+                        <p className="header__lastSeen">last seen {messages.length!==0?(messages[messages.length-1].timestamp?.toDate().toUTCString()):"Loading"}</p>
+                    </div>
+                    <div className="chat__headerRight">
+                        <IconButton>
+                            <SearchOutlined />
+                        </IconButton>
+                        <IconButton>
+                            <AttachFile />
+                        </IconButton>
+                        <IconButton>
+                            <MoreVertIcon />
+                        </IconButton>
+                    </div>
+                </div>
+                <div className="chat__body">
+                    {messages.map((message) => (
+                        <p className={`chat__messages ${(message.name===displayName) && 'chat__reciever'}`}>
+                        <span className="chat__name">{message.name}</span>{message.message}
+                        <span className="chat__timestamp">
+                         {new Date(message.timestamp?.toDate()).toUTCString()}  </span></p>
+                    ))}
+                    <div ref={messagesEndRef} />
+                </div>
+    
+                <div className="chat__footer">
+                    <IconButton>
+                    <InsertEmoticonIcon/>
+                    </IconButton>
+                    <form>
+                        <input value={input} type="text" placeholder="Type a message" onChange={e=>setInput(e.target.value)}/>
+                        <button type="submit" onClick={sendMessage} >Send A message</button>
+                    </form>
+                    <IconButton>
+                   <MicIcon/>
+                    </IconButton>
+    
+                </div>
+    
             </div>
+        )}
 
-            <div className="chat__footer">
-                <IconButton>
-                <InsertEmoticonIcon/>
-                </IconButton>
-                <form>
-                    <input value={input} type="text" placeholder="Type a message" onChange={e=>setInput(e.target.value)}/>
-                    <button type="submit" onClick={sendMessage} >Send A message</button>
-                </form>
-                <IconButton>
-               <MicIcon/>
-                </IconButton>
-
-            </div>
-
-        </div>
-    )
+    </>
+    ) 
 }
 
 export default Chat

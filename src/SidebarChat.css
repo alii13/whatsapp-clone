@@ -5,11 +5,19 @@
     border-bottom: 1px solid rgb(211, 202, 202);
 }
 .sidebarChat:hover{
-    background-color:#d8d6d6;
+    background-color:#0fb45c;
+    color: white;
+}
+.sidebarChat:hover .sidebar__lastMessageName{
+    color: black;
+
+}
+.sidebarChat:hover .sidebar__lastmessages__color{
+    color: red;
 }
 .sidebarChat h2{
     font-size: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 }
 .sidebarChat__info{
     margin-left: 15px;
@@ -22,4 +30,17 @@
 .sidebar__lastMessageName{
     color:red;
     font-weight:bolder;
+}
+.addnew__chat{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.sidebar__lastmessages__color{
+    font-weight: 700;
+    color: gray;
+}
+.room__name:hover{
+ 
+    color: white;
 }

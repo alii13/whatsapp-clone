@@ -88,11 +88,21 @@
     padding:7px;
     color: gray;
 }
+.hide__chat{
+    display: none;
+}
 @media(max-width:628px){
     .chat{
         flex:1;
     }
+    .chat__header{
+        background-color: #e6e6e6;
+        position: fixed;
+        width: -webkit-fill-available;
+        z-index: 3;
+    }
     .chat__body{
+        margin-top:40px;
         padding:15px;
     }
     .chat__messages{
@@ -111,5 +121,11 @@
     }
     .header__lastSeen{
         font-size: 0.6em;
+    }
+    .MuiPaper-root {
+        background-color: #e6e6e6;
+    }
+    .MuiPaper-root:focus{
+        outline: none;
     }
 }

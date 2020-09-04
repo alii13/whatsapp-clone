@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 import "./App.css";
 import Sidebar from "./Sidebar";
 import Chat from "./Chat"
@@ -10,7 +10,7 @@ function App() {
   const uid =  localStorage.getItem('uid')!==undefined?localStorage.getItem('uid'):null;
   //console.log(useStateValue);
   //const {user,setUser} = useState(null);
-  console.log(user)
+  //console.log(user)
   return (
     <div className="app">
     {

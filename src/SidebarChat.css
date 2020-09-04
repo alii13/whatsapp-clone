@@ -38,9 +38,18 @@
 }
 .sidebar__lastmessages__color{
     font-weight: 700;
+    max-width: 30vw;
+    overflow-wrap: anywhere;
     color: gray;
+
 }
 .room__name:hover{
  
     color: white;
+}
+@media(max-width:628px){
+    .sidebar__lastmessages__color{
+        max-width:75vw;
+        overflow-wrap: anywhere;
+    }
 }

@@ -13,12 +13,10 @@
   box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.4);
 }
 @media(max-width:628px){
-  .app{
-    height: 92vh;
-  }
  .app__body{
    height: 100%;
    margin: 0 !important;
    width: 100vw;
+   overflow-x: hidden;
  }
 }

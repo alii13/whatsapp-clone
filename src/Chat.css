@@ -25,9 +25,11 @@
     padding: 10px;
     border-radius:10px;
     width: fit-content;
+    max-width: 40vw;
     margin-bottom: 20px;
     margin-top: 5px;
     background-color: #fff;
+    overflow-wrap: anywhere;
 }
 
 .chat__name{
@@ -97,16 +99,18 @@
     }
     .chat__header{
         background-color: #e6e6e6;
-        position: fixed;
+        position: sticky;
+        top:0;
         width: -webkit-fill-available;
         z-index: 3;
     }
     .chat__body{
-        margin-top:40px;
         padding:15px;
     }
     .chat__messages{
         font-size:3vw;
+        max-width:75vw;
+        overflow-wrap: anywhere;
     }
     .chat__headerRight{
         min-width:60px !important;
@@ -118,6 +122,13 @@
     button.MuiButtonBase-root.MuiIconButton-root {
         font-size: 2vw;
         padding: 0.5em;
+    }
+    .chat__footer {
+        position: sticky;
+        bottom: 0;
+        background-color: #e6e6e6;;
+        z-index: 4;
+        height: 52px;
     }
     .header__lastSeen{
         font-size: 0.6em;

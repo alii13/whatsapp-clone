@@ -29,3 +29,26 @@
     background-color: #0b9c4f;
     color: white;
 }
+@media(max-width:628px){
+    .login__container{
+       width: 80vw;
+       padding:10vw 5vw;
+    }
+    .login__container img{
+        object-fit: contain;
+        width: 35vw;
+     
+    }
+    .login__text{
+        font-size:0.5em;
+    }
+    .login__container button {
+        margin-top: 10px;
+
+    }
+    .login__container img{
+        object-fit: contain;
+        margin-bottom: 20px;
+     
+    }
+}

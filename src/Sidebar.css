@@ -73,6 +73,16 @@
     }
     .sidebar__header{
         flex: 1;
+        background-color: #075E54;
+    }
+    .sidebar__header button.MuiButtonBase-root.MuiIconButton-root {
+        color: white;
+    }
+    .siderbar__wrapper{
+        background-color: #075E54;
+    }
+    .siderbar__wrapper button.MuiButtonBase-root.MuiIconButton-root {
+        color: white;
     }
     button.MuiButtonBase-root.MuiIconButton-root.sidebar__burger.MuiIconButton-colorInherit.MuiIconButton-edgeStart {
         margin-left: 0;

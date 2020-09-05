@@ -108,8 +108,9 @@
     .chat__header__absolute{
         position: fixed;
         top: 0;
+        color: white;
         z-index: 10;
-        background-color: #e6e6e6;
+        background-color: #075E54;
 
     }
     .chat__body{
@@ -137,6 +138,12 @@
     button.MuiButtonBase-root.MuiIconButton-root {
         font-size: 2vw;
         padding: 0.5em;
+    }
+    .chat__header__absolute button.MuiButtonBase-root.MuiIconButton-root {
+        color: white;
+    }
+    .chat__header__absolute .header__lastSeen{
+        color: white;
     }
     .chat__footer {
         position: fixed;

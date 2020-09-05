@@ -124,6 +124,7 @@
     .chat__header__absolute{
         display: flex;
         padding:20px;
+        width: -webkit-fill-available;
         border-bottom:1px solid lightgray
     }
     .chat__headerRight{

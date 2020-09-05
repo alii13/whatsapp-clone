@@ -138,7 +138,7 @@ function Chat() {
                     <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
                     <div className="chat__headerInfo">
                         <h3>{roomName}</h3>
-                        <p className="header__lastSeen">last seen {messages.length!==0?(messages[messages.length-1].timestamp?.toDate().toUTCString()):"Loading"}</p>
+                        <p className="header__lastSeen">last seen {messages.length!==0?(String(messages[messages.length-1].timestamp?.toDate().toUTCString()).slice(0,22)) :"Loading"}</p>
                     </div>
                     <div className="chat__headerRight">
                         <IconButton>
@@ -157,7 +157,7 @@ function Chat() {
                         <p className={`chat__messages ${(message.name===displayName) && 'chat__reciever'}`}>
                         <span className="chat__name">{message.name}</span>{message.message}
                         <span className="chat__timestamp">
-                         {new Date(message.timestamp?.toDate()).toUTCString()}  </span></p>
+                         {String(new Date(message.timestamp?.toDate()).toUTCString()).slice(5,12) + String(new Date(message.timestamp?.toDate()).toUTCString()).slice(17,22)}  </span></p>
                     ))}
                     <div ref={messagesEndRef} />
                 </div>

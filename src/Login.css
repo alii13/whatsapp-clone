@@ -24,7 +24,6 @@
     color: white;
 }
 .login__container button:hover {
-    margin-top: 50px;
     text-transform: inherit !important;
     background-color: #0b9c4f;
     color: white;

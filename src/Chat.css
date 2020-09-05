@@ -114,7 +114,7 @@
     }
     .chat__body{
         padding:15px;
-        flex: 0.94 1;
+        flex: 0.92 1;
     }
     .chat__messages{
         font-size:3vw;

@@ -29,7 +29,7 @@
 }
 .sidebar__lastMessageName{
     color:red;
-    font-weight:bolder;
+    /* font-weight:bolder; */
 }
 .addnew__chat{
    display: flex;
@@ -39,8 +39,10 @@
 .sidebar__lastmessages__color{
     font-weight: 700;
     max-width: 30vw;
-    overflow-wrap: anywhere;
+    overflow: hidden;
+    text-overflow: ellipsis; 
     color: gray;
+    white-space: nowrap;
 
 }
 .room__name:hover{
@@ -50,6 +52,8 @@
 @media(max-width:628px){
     .sidebar__lastmessages__color{
         max-width:75vw;
-        overflow-wrap: anywhere;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space: nowrap;
     }
 }

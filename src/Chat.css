@@ -72,6 +72,12 @@
     height: 62px;
     border-top:1px solid lightgray
 }
+.emoji-mart{
+    position: absolute !important;
+    top: -700%;
+    left: 0;
+    width: 30vw !important;
+}
 .chat__footer form{
     flex: 1;
     display: flex;
@@ -144,6 +150,10 @@
     }
     .chat__header__absolute .header__lastSeen{
         color: white;
+    }
+    .emoji-mart{
+        width: 100vw !important;
+        top: -970%;
     }
     .chat__footer {
         position: fixed;

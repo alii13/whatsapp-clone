@@ -66,6 +66,10 @@
     font-weight: bolder;
     color: red;
 }
+.mobile__tag{
+    color: white !important;
+    font-size: 10px;
+}
 @media(max-width:628px){
     .sidebar{
         flex: 1;

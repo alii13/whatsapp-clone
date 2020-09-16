@@ -30,6 +30,7 @@ function Chat() {
     const [{ togglerState }, dispatch] = useStateValue();
     const [emoji,setEmoji] = useState(false);
     const [issendChecked, setIssendChecked] = useState(false);
+    const [datewise,setDateWise]=useState([]);
     // const [isRecChecked, setIsRecChecked]=useState(1);
     const { width } = UseWindowDimensions();
 
@@ -76,6 +77,7 @@ function Chat() {
     const sendMessage = (e) => {
         e.preventDefault();
         // console.log("You Typedd >>>>",input);
+        if(input.length>0){
         db.collection("rooms").doc(roomId).collection("messages").add({
             message: input,
             name: displayName,
@@ -84,6 +86,7 @@ function Chat() {
         setIssendChecked(!issendChecked);
         issendChecked ? playOff() : playOn();
         setInput("");
+    }
     };
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {

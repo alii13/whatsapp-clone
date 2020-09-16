@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import { Avatar, IconButton } from "@material-ui/core";
+import { Avatar, Collapse, IconButton } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import ChatIcon from "@material-ui/icons/Chat";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -15,9 +15,31 @@ import Loader from "./Loader"
 
 function Sidebar() {
         const [rooms,setRooms] = useState([]);
-        const [toggler, setToggler]=useState(false)
+        const [toggler, setToggler]=useState(false);
+        const [sidebarBool, setsidebarBool] = useState(true);
         const [{togglerState}, dispatch]= useStateValue();
+        const [search, setSearch]=useState([]);
+        const [input, setInput] = useState("");
         const { width } = UseWindowDimensions();
+        //console.log(rooms);
+        const matcher = (s,values) => {
+            const re = RegExp(`.*${s.toLowerCase().split('').join('.*')}.*`)
+            return values.filter(v => v.data.name.toLowerCase().match(re));
+          };
+        const handleChange =(e) =>{
+           setsidebarBool(false);
+           setInput(e.target.value);
+        }
+        useEffect(()=>{
+            if(rooms.length>0){
+                   setSearch(matcher(input,rooms));
+                }
+                if(input===""){
+                    setsidebarBool(true);
+                }
+
+        },[input])
+        
         useEffect(()=>{
           //  console.log(db)
             const unsubscribe = db.collection('rooms').onSnapshot(snapshot=>{
@@ -82,17 +104,29 @@ function Sidebar() {
                     <div className="sidebar__search">
                         <div className="sidebar__searchContainer">
                         <SearchOutlined/>
-                        <input placeholder="Search or Start a new chat" type="text"/>
+                        <input placeholder="Search or Start a new chat"
+                        value={input} type="text" onChange={handleChange}/>
                         </div>
                     </div>
+                    {(sidebarBool)?(
                     <div className="sidebar__chats">
-                        <SidebarChat addNewChatVal="true" />
-                        {rooms.map(room=>(
-                            <SidebarChat key={room.id} id={room.id}
-                            name={room.data.name} />
-                        ))}
-                    </div>
-                    {/* <SidebarCharList rooms={rooms}/> */}
+                    <SidebarChat addNewChatVal="true" />
+                    {rooms.map(room=>(
+                        <SidebarChat key={room.id} id={room.id}
+                        name={room.data.name} />
+                    ))}
+                </div>
+
+                ):(
+                    <div className="sidebar__chats">
+                    <SidebarChat addNewChatVal="true" />
+                    {search.map(room=>(
+                        <SidebarChat key={room.id} id={room.id}
+                        name={room.data.name} />
+                    ))}
+                </div>
+
+                    )}
                 </div>
 
                 ):(
@@ -114,16 +148,28 @@ function Sidebar() {
                     <div className="sidebar__search">
                         <div className="sidebar__searchContainer">
                         <SearchOutlined/>
-                        <input placeholder="Search or Start a new chat" type="text"/>
+                        <input placeholder="Search or Start a new chat"  value={input} type="text" onChange={handleChange}/>
                         </div>
                     </div>
+                    {(sidebarBool)?(
                     <div className="sidebar__chats">
-                        <SidebarChat addNewChatVal="true" />
-                        {rooms.length==0?(<Loader/>):rooms.map(room=>(
-                            <SidebarChat key={room.id} id={room.id}
-                            name={room.data.name} />
-                        ))}
-                    </div>
+                    <SidebarChat addNewChatVal="true" />
+                    {rooms.map(room=>(
+                        <SidebarChat key={room.id} id={room.id}
+                        name={room.data.name} />
+                    ))}
+                </div>
+
+                ):(
+                    <div className="sidebar__chats">
+                    <SidebarChat addNewChatVal="true" />
+                    {search.map(room=>(
+                        <SidebarChat key={room.id} id={room.id}
+                        name={room.data.name} />
+                    ))}
+                </div>
+
+                    )}
                     {/* <SidebarCharList rooms={rooms}/> */}
                 </div>
 

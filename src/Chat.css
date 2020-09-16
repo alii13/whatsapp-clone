@@ -110,11 +110,13 @@
         background-color: #e6e6e6;
         width: -webkit-fill-available;
         position: relative;
+        padding: 7px;
     }
     .chat__header__absolute{
         position: fixed;
         top: 0;
         color: white;
+        padding: 7px !important;
         z-index: 10;
         background-color: #075E54;
 
@@ -158,6 +160,8 @@
     .chat__footer {
         position: fixed;
         bottom: 0;
+        border-radius: 50px;
+        margin: 0 5px;
         background-color: #e6e6e6;;
         width: -webkit-fill-available;
         z-index: 4;

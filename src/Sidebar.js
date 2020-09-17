@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import { Avatar, Collapse, IconButton } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import ChatIcon from "@material-ui/icons/Chat";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+// import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import SidebarChat from "./SidebarChat"
 import "./Sidebar.css";
@@ -11,6 +11,7 @@ import db from "./firebase"
 import { useStateValue } from './StateProvider'
 import { actionTypes } from "./reducer";
 import UseWindowDimensions from "./UseWindowDimensions";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Loader from "./Loader"
 
 function Sidebar() {
@@ -20,6 +21,7 @@ function Sidebar() {
         const [{togglerState}, dispatch]= useStateValue();
         const [search, setSearch]=useState([]);
         const [input, setInput] = useState("");
+        const [logout,setLogout]=useState(false);
         const { width } = UseWindowDimensions();
         //console.log(rooms);
         const matcher = (s,values) => {
@@ -30,6 +32,12 @@ function Sidebar() {
            setsidebarBool(false);
            setInput(e.target.value);
         }
+        const exitApp =()=>{
+            localStorage.removeItem("uid");
+            window.location.reload();
+            setLogout(true);
+            
+        }
         useEffect(()=>{
             if(rooms.length>0){
                    setSearch(matcher(input,rooms));
@@ -37,8 +45,8 @@ function Sidebar() {
                 if(input===""){
                     setsidebarBool(true);
                 }
-
         },[input])
+
         
         useEffect(()=>{
           //  console.log(db)
@@ -96,7 +104,7 @@ function Sidebar() {
                                 <ChatIcon />
                             </IconButton>
                             <IconButton>
-                                <MoreVertIcon />
+                            <div onClick={exitApp}><ExitToAppIcon/></div>
                             </IconButton>
                         </div>
                     </div>
@@ -141,7 +149,7 @@ function Sidebar() {
                                 <ChatIcon />
                             </IconButton>
                             <IconButton>
-                                <MoreVertIcon />
+                               <div onClick={exitApp}><ExitToAppIcon/></div>
                             </IconButton>
                         </div>
                     </div>
@@ -154,10 +162,10 @@ function Sidebar() {
                     {(sidebarBool)?(
                     <div className="sidebar__chats">
                     <SidebarChat addNewChatVal="true" />
-                    {rooms.map(room=>(
-                        <SidebarChat key={room.id} id={room.id}
-                        name={room.data.name} />
-                    ))}
+                    {rooms.length==0?(<Loader/>):rooms.map(room=>(
+                            <SidebarChat key={room.id} id={room.id}
+                            name={room.data.name} />
+                        ))}
                 </div>
 
                 ):(

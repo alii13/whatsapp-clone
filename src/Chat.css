@@ -79,6 +79,12 @@ p.chat__body__daystamp__title {
     
     text-align: center;
 }
+input:disabled{
+    cursor: not-allowed;
+}
+.chat a{
+    color:rgb(49 91 188) !important;
+}
 .chat__footer{
     display: flex;
     position: relative;
@@ -170,6 +176,7 @@ p.chat__body__daystamp__title {
     }
     .emoji-mart{
         width: 100vw !important;
+        z-index: 999;
         top: -970%;
     }
     .chat__footer {
@@ -190,6 +197,7 @@ p.chat__body__daystamp__title {
         height: 62px;
         border-top:1px solid lightgray
     }
+
     .header__lastSeen{
         font-size: 0.6em;
     }

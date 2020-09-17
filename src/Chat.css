@@ -126,6 +126,7 @@ input:disabled{
 @media(max-width:628px){
     .chat{
         flex:1;
+        background-image: url('./bg.png');
     }
     .chat__header{
         background-color: #e6e6e6;
@@ -147,7 +148,7 @@ input:disabled{
         flex: 0.92 1;
     }
     .chat__messages{
-        font-size:3vw;
+        font-size:3.9vw;
         max-width:75vw;
         word-wrap: break-word;
     }
@@ -184,7 +185,7 @@ input:disabled{
         bottom: 0;
         border-radius: 50px;
         margin: 0 5px;
-        background-color: #e6e6e6;;
+        background-color:white;;
         width: -webkit-fill-available;
         z-index: 4;
         height: 52px;
@@ -192,6 +193,8 @@ input:disabled{
     .chat__footer__absolute{
         display: flex;
         position: absolute;
+        border-radius: 50px;
+        margin: 0 5px;
         justify-content: space-between;
         align-items: center;
         height: 62px;

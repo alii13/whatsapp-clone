@@ -440,6 +440,7 @@ function Chat() {
                                 placeholder="Type a message"
                                 onChange={(e) => setInput(e.target.value)}
                                 onClick={checkEmojiClose}
+                                disabled={(roomName=="Admin: Ali")?true:false}
                             />
                             <button type="submit" onClick={sendMessage}>
                                 Send A message
@@ -460,6 +461,7 @@ function Chat() {
                                 type="text"
                                 placeholder="Type a message"
                                 onChange={(e) => setInput(e.target.value)}
+                                disabled={(roomName=="Admin: Ali")?true:false}
                             />
                             <button type="submit" onClick={sendMessage}>
                                 Send A message

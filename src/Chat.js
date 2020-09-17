@@ -16,6 +16,7 @@ import UseWindowDimensions from "./UseWindowDimensions";
 import useSound from "use-sound";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
+import ChatDay from "./ChatDay";
 
 // import recievesoundURL from "./recieve.mp3"
 // import DrawerPhone from "./DrawerPhone";
@@ -31,6 +32,7 @@ function Chat() {
     const [emoji,setEmoji] = useState(false);
     const [issendChecked, setIssendChecked] = useState(false);
     const [datewise,setDateWise]=useState([]);
+    const [clientGMT,setClinetGMT]=useState("");
     // const [isRecChecked, setIsRecChecked]=useState(1);
     const { width } = UseWindowDimensions();
 
@@ -52,7 +54,15 @@ function Chat() {
         setEmoji(false);
       }
     }
-
+    //console.log(messages);
+    function getTimeZone() {
+        var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
+        return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+    }
+    useEffect(()=>{
+        setClinetGMT(getTimeZone());
+        console.log(clientGMT);
+    })
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000));
         if (roomId) {
@@ -88,6 +98,50 @@ function Chat() {
         setInput("");
     }
     };
+    let blankObj={};
+    let TotalObj=[];
+    if(messages.length>0){
+        // for( const message in messages){
+
+        // }
+        let checkDate="";
+        let blankArray=[];
+        //let tempObj={};
+        messages.forEach(function(message,i){
+            let messageDate = String(
+                new Date(message.timestamp?.toDate()).toUTCString()).slice(5, 12)
+            if(i==0){
+                checkDate=messageDate;
+                blankArray.push({messageData:message.message,name:message.name});
+            }
+            if(checkDate==messageDate){
+                blankArray.push({messageData:message.message,name:message.name,timestamp:(message.timestamp+new Date().getTimezoneOffset())});
+                console.log( new Date(message.timestamp?.toDate()).toUTCString(),new Date().getTimezoneOffset())
+            }else{
+                checkDate=messageDate;
+                blankObj[messageDate]=blankArray;
+                TotalObj.push(blankObj);
+                blankObj={};
+                blankArray=[];
+            }
+        })
+    }
+    useEffect(()=>{
+        setDateWise(TotalObj);
+    },[messages]);
+    // console.log(TotalObj);
+    // if(Object.keys(datewise).length !== 0){
+    //     Object.entries(datewise).forEach(
+    //         ([key, value]) => {
+    //             console.log(key);
+    //             value.forEach((item,i)=>{
+    //                 console.log(item.messageData,item.name);
+    //             }); 
+    //         }
+    //     );
+    // }
+    
+
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -181,6 +235,70 @@ function Chat() {
                         </div>
                     </div>
                     <div className="chat__body">
+                                    {(datewise.length>0)?(
+                                        datewise.map((item,i)=>(
+                                            //  <div className="chat__body__daystamp">
+                                            //     <p className="chat__body__daystamp__title">{Object.keys(item)}</p>
+                                            //  </div>
+                                            item[Object.keys(item)].map((e,i)=>(
+                                                (i==0)?(
+                                            <div>
+                                             <div className="chat__body__daystamp">
+                                                <p className="chat__body__daystamp__title">{Object.keys(item)}</p>
+                                             </div>
+                                                <p
+                                                    className={`chat__messages ${e.name === displayName && "chat__reciever"
+                                                        }`}
+                                                >
+                                                    <span className="chat__name">{e.name}</span>
+                                                    {e.messageData}
+                                                    <span className="chat__timestamp">
+                                                        {
+                                                            String(
+                                                                new Date(e.timestamp?.toDate()).toUTCString()
+                                                            ).slice(17, 22)}{" "}
+                                                    </span>
+                                                </p>
+                                                </div>
+                                                ):(
+                                                    <p
+                                                    className={`chat__messages ${e.name === displayName && "chat__reciever"
+                                                        }`}
+                                                >
+                                                    <span className="chat__name">{e.name}</span>
+                                                    {e.messageData}
+                                                    <span className="chat__timestamp">
+                                                        {
+                                                            String(
+                                                                new Date(e.timestamp?.toDate()).toUTCString()
+                                                            ).slice(17, 22)}{" "}
+                                                    </span>
+                                                </p>
+                                                )
+                                                
+
+                                                ))
+                                            //  console.log(Object.keys(item))
+                                             // console.log(item[Object.keys(item)])
+                                        ))
+                                      
+                                            // <div className="chat__body__daystamp">
+                                            //     <p className="chat__body__daystamp__title"></p>
+                                            //  </div>
+                                                    // Object.entries(datewise).forEach(
+                                                    //     ([key, value]) => {
+
+                                                    //     {
+                                                    //     value.forEach((item,i)=>{
+                                                    //             console.log(item.messageData,item.name)
+                                                    //         })
+                                                    //     }
+                                                    // }
+                                                    // )
+
+                                        
+                                    ):(null)}
+
                         {messages.map((message) => (
                             <p
                                 className={`chat__messages ${message.name === displayName && "chat__reciever"

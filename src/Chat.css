@@ -64,6 +64,21 @@
     overflow-x: hidden;
 
 }
+.chat__body__daystamp{
+    background-color: #bbffe8;
+    position: sticky;
+    z-index: 9;
+    top: 0;
+    width: fit-content;
+    padding: 3px 10px;
+    margin: 0px auto 40px auto;
+    border-radius: 8px;
+  
+}
+p.chat__body__daystamp__title {
+    
+    text-align: center;
+}
 .chat__footer{
     display: flex;
     position: relative;

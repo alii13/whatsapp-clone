@@ -440,7 +440,7 @@ function Chat() {
                                 placeholder="Type a message"
                                 onChange={(e) => setInput(e.target.value)}
                                 onClick={checkEmojiClose}
-                                disabled={(displayName=="Shekh Aliul WqnNsFNEPr")?false:true}
+                                disabled={(roomName==="Admin: Ali")?(((displayName=="Shekh Aliul WqnNsFNEPr")?(true):(false))?false:true):false}
                             />
                             <button type="submit" onClick={sendMessage}>
                                 Send A message
@@ -649,7 +649,7 @@ function Chat() {
                                     placeholder="Type a message"
                                     onChange={(e) => setInput(e.target.value)}
                                     onClick={checkEmojiClose}
-                                    disabled={(displayName=="Shekh Aliul WqnNsFNEPr")?false:true}
+                                    disabled={(roomName==="Admin: Ali")?(((displayName=="Shekh Aliul WqnNsFNEPr")?(true):(false))?false:true):false}
                                 />
                                 <button type="submit" onClick={sendMessage}>
                                     Send A message

@@ -32,9 +32,10 @@ function SidebarChat(props) {
     },[])
 
 
-    // console.log(messages,id);
+     console.log(messages,id);
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000));
+        
     }, []);
 
     const createChat = () => { 
@@ -55,13 +56,15 @@ function SidebarChat(props) {
     })
 
    }
+//    photoUrl=messages[0]?.photoURL;
+   
 
 
 
     return (addNewChatVal!=="true") ? (
         <Link to={`/rooms/${id}`} onClick={handleChat}>
             <div className="sidebarChat">
-            <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+            <Avatar src={messages[0]?.photoURL} />
             <div className="sidebarChat__info">
                 <h2 className="room__name">{name}</h2>
                 <p className="sidebar__lastmessages__color"><span className="sidebar__lastMessageName">{ (id !="" && messages.length>0)?(messages[0]?.name+ ": "):"Loading: "}</span>{ (id !="" && messages.length>0)?(messages[0]?.message):"Start a new chat"}</p>

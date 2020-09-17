@@ -29,11 +29,13 @@ function Chat() {
     const [toggler, setToggler] = useState(true);
     const displayName = localStorage.getItem("displayName");
     const [{ togglerState }, dispatch] = useStateValue();
+    const [{photoURL}]= useStateValue();
     const [emoji,setEmoji] = useState(false);
     const [issendChecked, setIssendChecked] = useState(false);
     const [datewise,setDateWise]=useState([]);
     const [clientGMT,setClinetGMT]=useState("");
-    // const [isRecChecked, setIsRecChecked]=useState(1);
+    const [lastseenPhoto,setLastseen]=useState("");
+   // const [isRecChecked, setIsRecChecked]=useState(1);
     const { width } = UseWindowDimensions();
     var hour=0,extramin=0,minutes=0,hourly=0,GMTminutes=String(clientGMT).slice(4,6),scrl,fix=0;
    // console.log(GMTminutes)
@@ -57,6 +59,7 @@ function Chat() {
         setEmoji(false);
       }
     }
+    //console.log(photoURL);
     // console.log(messages);
     function getTimeZone() {
         var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
@@ -85,8 +88,11 @@ function Chat() {
                 });
         }
     }, [roomId]);
+    useEffect(()=>{
+        setLastseen(messages[messages.length-1]?.photoURL)
+    },[messages])
 
-    // console.log(togglerState);
+    //  console.log(lastseenPhoto);
 
     const sendMessage = (e) => {
         e.preventDefault();
@@ -96,6 +102,7 @@ function Chat() {
             message: input,
             name: displayName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            photoURL:localStorage.getItem("photoURL")
         });
         setIssendChecked(!issendChecked);
         issendChecked ? playOff() : playOn();
@@ -224,7 +231,7 @@ function Chat() {
                             <ArrowBackIcon />
                         </IconButton>
                         <Avatar
-                            src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+                            src={lastseenPhoto}
                         />
                         <div className="chat__headerInfo">
                             <h3>{roomName}</h3>
@@ -259,7 +266,7 @@ function Chat() {
                             <ArrowBackIcon />
                         </IconButton>
                         <Avatar
-                            src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+                            src={lastseenPhoto}
                         />
                         <div className="chat__headerInfo">
                             <h3>{roomName}</h3>
@@ -476,7 +483,7 @@ function Chat() {
                     <div className={"chat"}>
                         <div className="chat__header">
                             <Avatar
-                                src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+                                src={lastseenPhoto}
                             />
                             <div className="chat__headerInfo">
                                 <h3>{roomName}</h3>

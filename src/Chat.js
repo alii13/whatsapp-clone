@@ -35,7 +35,7 @@ function Chat() {
     const [clientGMT,setClinetGMT]=useState("");
     // const [isRecChecked, setIsRecChecked]=useState(1);
     const { width } = UseWindowDimensions();
-    var hour=0,extramin=0,minutes=0,hourly=0,GMTminutes=String(clientGMT).slice(4,6),scrl,fix=8;
+    var hour=0,extramin=0,minutes=0,hourly=0,GMTminutes=String(clientGMT).slice(4,6),scrl,fix=0;
    // console.log(GMTminutes)
 
 

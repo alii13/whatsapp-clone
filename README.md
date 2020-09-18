@@ -18,6 +18,7 @@ Firebase config data you have to replace it with yours & save.
 
 #### 5: Now, Goto `src` directory again and find file named `.firebasesrc`
 ![](https://i.ibb.co/zhPvYpc/firebasesrc.png)
+
 Replace the line `"default": "your_project__name"` & save.
 
 #### 6: Hit `npm start` in terminal & Boom you have your own whatsapp clone!!  open at port 3000.

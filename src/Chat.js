@@ -168,6 +168,10 @@ function Chat() {
                 blankObj={};
                 blankArray=[];
                 blankArray.push({messageData:message.message,name:message.name,timestamp:message.timestamp});
+                if(messageDate!=dateArray[index]&& i==messages.length-1){
+                    blankObj[messageDate]=blankArray;
+                    TotalObj.push(blankObj);
+                }
                 index=index+1;
 
             }
@@ -518,10 +522,13 @@ function Chat() {
                                             //  </div>
                                             item[Object.keys(item)].map((e,i)=>(
                                                 (i==0)?(
-                                            <>
+                                            <>{(Object.keys(item) && Object.keys(item)!=undefined )?(
                                              <div className="chat__body__daystamp">
                                                 <p className="chat__body__daystamp__title">{(parseInt(String(Object.keys(item)).slice(0,2))== parseInt(String(new Date().getDate())))?("TODAY"):(Object.keys(item))}</p>
                                              </div>
+                                            ):(null)
+
+                                             }
                                                 <p
                                                     className={`chat__messages ${e.name === displayName && "chat__reciever"
                                                         }`}

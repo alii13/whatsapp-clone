@@ -1,70 +1,45 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Change Firebase config to your project config
+## Follow these simple steps to have your own whatsapp clone
 
-## Available Scripts
+#### 1: Clone this repo using this command 
+`git clone https://github.com/alii13/whatsapp-clone.git`
 
-In the project directory, you can run:
+#### 2: Enter 
+`cd whatsapp-clone`
 
-### `npm start`
+#### 3: Next
+`npm install`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### 4: Goto `src/components` & Find file named `firebase.js` => Replace the config data to your project config data.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![](https://i.ibb.co/DLS72Py/final.png)
+Firebase config data you have to replace it with yours & save.
 
-### `npm test`
+#### 5: Now, Goto `src` directory again and find file named `.firebasesrc`
+![](https://i.ibb.co/zhPvYpc/firebasesrc.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Replace the line `"default": "your_project__name"` & save.
 
-### `npm run build`
+#### 6: Hit `npm start` in terminal & Boom you have your own whatsapp clone!!  open at port 3000.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Set Up Hosting in Firebase
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### 1: Hit command `firebase init`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 2: Enter Yes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### 3: Goto the 4th option says - "Configure and Deploy firebase Hosting sites", Use Arrow key to go down & Hit spacebar to select the option and then hit Enter key
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### 4: Enter `build` for directory && select `Yes` for all other options.
 
-## Learn More
+#### 5: After initialization Completed. Enter 
+`npm run build`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 6: Now the last command
+Enter `firebase deploy`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Boom! You have succesfully hosted your firebase app. Click on the link and Enjoy!. Don't forget to rate the repository.

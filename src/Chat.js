@@ -306,9 +306,9 @@ function Chat() {
                                             item[Object.keys(item)].map((e,i)=>(
                                                 (i==0)?(
                                             <>
-                                             <div className="chat__body__daystamp">
+                                             {(parseInt(String(Object.keys(item)).slice(0,2)))?(<div className="chat__body__daystamp">
                                                 <p className="chat__body__daystamp__title">{(parseInt(String(Object.keys(item)).slice(0,2))== parseInt(String(new Date().getDate())))?("TODAY"):(Object.keys(item))}</p>
-                                             </div>
+                                             </div>):(null)}
                                                 <p
                                                     className={`chat__messages ${e.name === displayName && "chat__reciever"
                                                         }`}
@@ -517,16 +517,13 @@ function Chat() {
                         <div   className="chat__body" onClick={checkEmojiClose}>
                             {(datewise.length>0)?(
                                         datewise.map((item,i)=>(
-                                            //  <div className="chat__body__daystamp">
-                                            //     <p className="chat__body__daystamp__title">{Object.keys(item)}</p>
-                                            //  </div>
                                             item[Object.keys(item)].map((e,i)=>(
                                                 (i==0)?(
                                             <>{(Object.keys(item) && Object.keys(item)!=undefined )?(
                                              <div className="chat__body__daystamp">
                                                 <p className="chat__body__daystamp__title">{(parseInt(String(Object.keys(item)).slice(0,2))== parseInt(String(new Date().getDate())))?("TODAY"):(Object.keys(item))}</p>
                                              </div>
-                                            ):(null)
+                                            ):("")
 
                                              }
                                                 <p

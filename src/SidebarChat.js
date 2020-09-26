@@ -57,6 +57,8 @@ function SidebarChat(props) {
 
     const createChat = () => { 
         const roomName=prompt("Please enter name for chat")
+        if(roomName && roomName.length>=20){
+            return alert('enter a shorter name for the room') }
         if(roomName){
           db.collection("rooms").add({
               name:roomName,

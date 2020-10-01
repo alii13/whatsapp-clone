@@ -514,7 +514,7 @@ function Chat() {
                                 </IconButton>
                             </div>
                         </div>
-                        <div   className="chat__body" onClick={checkEmojiClose}>
+                        <div className="chat__body scrollbar-juicy-peach" onClick={checkEmojiClose}>
                             {(datewise.length>0)?(
                                         datewise.map((item,i)=>(
                                             item[Object.keys(item)].map((e,i)=>(

@@ -28,6 +28,8 @@ Replace the line `"default": "your_project__name"` & save.
 
 ## Set Up Hosting in Firebase
 
+### 0: intstall firebase cli `npm i firebase-tools`
+
 #### 1: Hit command `firebase init`
 
 #### 2: Enter Yes

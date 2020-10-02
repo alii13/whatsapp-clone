@@ -50,7 +50,7 @@ function Sidebar() {
         
         useEffect(()=>{
           //  console.log(db)
-            const unsubscribe = db.collection('rooms').onSnapshot(snapshot=>{
+            const unsubscribe = db.collection('rooms').orderBy('timestamp', 'desc').onSnapshot(snapshot=>{
                 setRooms(snapshot.docs.map(doc=>(
                     {
                         id:doc.id,
@@ -160,7 +160,7 @@ function Sidebar() {
                         </div>
                     </div>
                     {(sidebarBool)?(
-                    <div className="sidebar__chats">
+                    <div className="sidebar__chats scrollbar-juicy-peach">
                     <SidebarChat addNewChatVal="true" />
                     {rooms.length==0?(<Loader/>):rooms.map(room=>(
                             <SidebarChat key={room.id} id={room.id}
@@ -169,7 +169,7 @@ function Sidebar() {
                 </div>
 
                 ):(
-                    <div className="sidebar__chats">
+                    <div className="sidebar__chats ">
                     <SidebarChat addNewChatVal="true" />
                     {search.map(room=>(
                         <SidebarChat key={room.id} id={room.id}

@@ -12,7 +12,7 @@ import "./Chat.css";
 import { Link, useParams } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { actionTypes } from "./reducer";
-import UseWindowDimensions from "./UseWindowDimensions";
+import UseWindowDimensions from "./UseWindowDimensions"
 import useSound from "use-sound";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";

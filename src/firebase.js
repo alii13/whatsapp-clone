@@ -19,12 +19,12 @@ const firebaseConfig = {
   storageBucket: "whatsapp-73989.appspot.com",
   messagingSenderId: "166827944927",
   appId: "1:166827944927:web:28451dca14499bc919326a",
-  measurementId: "G-E7CXYXDVYG"
+  measurementId: "G-E7CXYXDVYG",
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
-const  provider = new firebase.auth.GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
 
-export {auth, provider};
+export { auth, provider };
 export default db;

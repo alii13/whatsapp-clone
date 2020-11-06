@@ -1,53 +1,62 @@
-.login{
-    background-color:#f8f8f8;
+.login {
+    background-color: #f8f8f8;
     height: 100vh;
     width: 100vw;
     display: grid;
     place-items: center;
 }
-.login__container{
-    padding:100px;
+
+.login__container {
+    padding: 100px;
     text-align: center;
     background-color: white;
-    border-radius:10px;
-    box-shadow:0 1px 20px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.3);
 }
-.login__container img{
+
+.login__container img {
     object-fit: contain;
     margin-bottom: 40px;
- 
+
 }
+
 .login__container button {
     margin-top: 50px;
     text-transform: inherit !important;
     background-color: #0fb45c;
     color: white;
 }
+
 .login__container button:hover {
     text-transform: inherit !important;
     background-color: #0b9c4f;
     color: white;
 }
-@media(max-width:628px){
-    .login__container{
-       width: 80vw;
-       padding:10vw 5vw;
+
+@media(max-width:628px) {
+    .login__container {
+        width: 80vw;
+        padding: 10vw 5vw;
     }
-    .login__container img{
+
+    .login__container img {
         object-fit: contain;
         width: 35vw;
-     
+
     }
-    .login__text{
-        font-size:0.5em;
+
+    .login__text {
+        font-size: 0.5em;
     }
+
     .login__container button {
         margin-top: 10px;
 
     }
-    .login__container img{
+
+    .login__container img {
         object-fit: contain;
         margin-bottom: 20px;
-     
+
     }
 }

@@ -1,9 +1,7 @@
-import React from 'react'
-import "./Loader.css"
+import React from "react";
+import "./Loader.css";
 function Loader() {
-    return (
-        <div class="lds-hourglass"></div>
-    )
+  return <div class="lds-hourglass"></div>;
 }
 
-export default Loader
+export default Loader;

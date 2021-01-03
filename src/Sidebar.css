@@ -1,93 +1,112 @@
-.sidebar{
+.sidebar {
     display: flex;
     flex-direction: column;
     flex: 0.35;
 }
-.sidebar__header{
+
+.sidebar__header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     border-right: 1px solid lightgray;
 }
-.sidebar__search{
+
+.sidebar__search {
     display: flex;
     align-items: center;
     background-color: #dadadace;
     height: 39px;
     padding: 10px;
 }
-.sidebar__searchContainer{
+
+.sidebar__searchContainer {
     display: flex;
     align-items: center;
     background-color: white;
     width: 100%;
-    height:35px;
-    border-radius:20px;
+    height: 35px;
+    border-radius: 20px;
 }
-.sidebar__searchContainer .MuiSvgIcon-root{
+
+.sidebar__searchContainer .MuiSvgIcon-root {
     color: gray;
     padding: 10px;
 }
-.sidebar__searchContainer input{
-    border:none;
+
+.sidebar__searchContainer input {
+    border: none;
     margin-left: 10px;
     width: 80%;
- 
+
 }
-.sidebar__searchContainer input:focus{
+
+.sidebar__searchContainer input:focus {
     border: none;
     outline: none;
 }
-.sidebar__headerRight{
+
+.sidebar__headerRight {
     display: flex;
     align-items: center;
     justify-content: space-between;
     min-width: 10vw;
 }
-.sidebar__headerRight  >.MuiSvgIcon-root{
-    margin-right:2vw;
+
+.sidebar__headerRight>.MuiSvgIcon-root {
+    margin-right: 2vw;
     font-size: 24px !important;
 }
-.sidebar__chats{
+
+.sidebar__chats {
     flex: 1;
     background-color: white;
-    overflow:scroll;
+    overflow: scroll;
     position: relative;
     overflow-x: hidden;
 }
-.hide__sidebar{
+
+.hide__sidebar {
     display: none;
 }
-.siderbar__wrapper{
+
+.siderbar__wrapper {
     display: flex;
 }
-.sidebar__greeting{
-    font-size:14px;
+
+.sidebar__greeting {
+    font-size: 14px;
     font-weight: bolder;
     color: red;
 }
-.mobile__tag{
+
+.mobile__tag {
     color: white !important;
     font-size: 10px;
 }
-@media(max-width:628px){
-    .sidebar{
+
+@media(max-width:628px) {
+    .sidebar {
         flex: 1;
         margin-left: 0;
     }
-    .sidebar__header{
+
+    .sidebar__header {
         flex: 1;
         background-color: #075E54;
     }
+
     .sidebar__header button.MuiButtonBase-root.MuiIconButton-root {
         color: white;
     }
-    .siderbar__wrapper{
+
+    .siderbar__wrapper {
         background-color: #075E54;
     }
+
     .siderbar__wrapper button.MuiButtonBase-root.MuiIconButton-root {
         color: white;
     }
+
     button.MuiButtonBase-root.MuiIconButton-root.sidebar__burger.MuiIconButton-colorInherit.MuiIconButton-edgeStart {
         margin-left: 0;
         padding-left: 10px;

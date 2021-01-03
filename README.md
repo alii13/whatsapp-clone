@@ -11,7 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 #### 3: Next
 `npm install`
 
-#### 4: Goto `src/components` & Find file named `firebase.js` => Replace the config data to your project config data.
+#### 4: Goto `src` & Find file named `firebase.js` => Replace the config data to your project config data.
 
 ![](https://i.ibb.co/DLS72Py/final.png)
 Firebase config data you have to replace it with yours & save.

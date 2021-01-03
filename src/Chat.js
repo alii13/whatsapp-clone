@@ -18,8 +18,6 @@ import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import Linkify from "react-linkify";
 
-// import recievesoundURL from "./recieve.mp3"
-// import DrawerPhone from "./DrawerPhone";
 function Chat() {
   const [seed, setSeed] = useState("");
   const [input, setInput] = useState("");

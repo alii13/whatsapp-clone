@@ -95,7 +95,7 @@ function Sidebar() {
                 </IconButton>
                     <div className="sidebar__header">
 
-                        <Avatar src={photoURL}/> <p className="sidebar__greeting mobile__tag"> <a href="https://alii13.github.io/portfolio/" style={{color:"white"}}>| MADE BY <span style={{color:"white"}}>ALI</span> |</a></p>
+                        <Avatar src={photoURL}/> <p className="sidebar__greeting mobile__tag"> <a href="https://Alii13.github.io/portfolio/" style={{color:"white"}}> Made With ♥ by <span style={{color:"white"}}>Ali</span></a></p>
                         <div className="sidebar__headerRight">
                             <IconButton>
                                 <DonutLargeIcon />
@@ -140,7 +140,7 @@ function Sidebar() {
                 ):(
                     <div className={"sidebar"}>
                     <div className="sidebar__header">
-                <Avatar src={photoURL}/> <p className="sidebar__greeting"> <a href="https://alii13.github.io/portfolio/">| MADE BY <span style={{color:"blue"}}>ALI</span> |</a></p>
+                <Avatar src={photoURL}/> <p className="sidebar__greeting"> <a href="https://Alii13.github.io/portfolio/">Made With ♥ by  <span style={{color:"blue"}}>Ali</span></a></p>
                         <div className="sidebar__headerRight">
                             <IconButton>
                                 <DonutLargeIcon />

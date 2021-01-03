@@ -104,7 +104,7 @@ function Sidebar() {
                   href="https://alii13.github.io/portfolio/"
                   style={{ color: "white" }}
                 >
-                  | MADE BY <span style={{ color: "white" }}>ALI</span> |
+                  Made with ♥ by <span style={{ color: "white" }}>Ali</span>
                 </a>
               </p>
               <div className="sidebar__headerRight">
@@ -156,7 +156,7 @@ function Sidebar() {
             <p className="sidebar__greeting">
               {" "}
               <a href="https://alii13.github.io/portfolio/">
-                | MADE BY <span style={{ color: "blue" }}>ALI</span> |
+                Made with ♥ by <span style={{ color: "blue" }}>Ali</span>
               </a>
             </p>
             <div className="sidebar__headerRight">
